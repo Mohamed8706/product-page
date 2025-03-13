@@ -1,0 +1,177 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Header */
+.breadcrumb {
+    padding: 20px 30px;
+
+}
+
+.breadcrumb nav {
+    font-size: 16px;
+    color: #888;
+}
+
+.breadcrumb a {
+    color: #888;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    margin-inline: 8px;
+}
+
+.breadcrumb a:hover {
+    color: #333;
+    text-decoration: underline;
+}
+
+.breadcrumb span {
+    color: #333;
+    font-weight: 500;
+}
+
+/* Main Container */
+.main-container {
+    max-width: 1500px;
+    margin: 0 auto; 
+    padding: 0 40px;
+    padding-bottom: 20px;
+}
+
+/* Product Section */
+.product {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 10px 0;
+    width: 100%;
+    height: 100vh;
+
+}
+
+.product-image {
+    flex: 4;
+    min-width: 300px; 
+
+}
+
+.gallery {
+    width: 100%;
+    overflow: hidden;
+}
+.main-image-container {
+    position: relative;
+    width: 100%;
+    height: 430px;
+
+}
+
+.main-image {
+    width: 100%;
+    position: absolute;
+    object-fit: cover;
+    border-radius: 6px;
+    height: 420px;
+    display: none;
+}
+
+.main-image#img1 {
+    display: block; 
+}
+
+
+.main-image:target {
+    display: block;
+}
+
+.main-image:target ~ .main-image {
+    display: none;
+}
+
+
+.main-image:not(:target) {
+    display: none;
+}
+
+.main-image#img1:not(:target) {
+    display: block;
+}
+.thumbnails {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-top: 5px;
+    width: 100%;
+    height: 100px;
+}
+
+.thumbnails img {
+    height: 100px;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+}
+
+.thumbnails img:hover {
+    opacity: 0.8;
+}
+
+.product-description {
+    width: 100%;
+    text-align: left;
+    margin-top: 1rem;
+}
+
+.product-description h1 {
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.product-description h3 {
+    font-size: 1.3rem;
+    font-weight: 500;
+}
+.product-description p {
+    font-size: 1rem;
+    color: #666;
+    margin-top: 1rem;
+    font-weight: 500;
+}
+.product-info {
+    flex: 3;
+    min-width: 300px; 
+    box-shadow: #333 0px 0px 2px;
+    border-radius: 6px;
+    padding: 15px;
+}
+
+.product-info h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.product-info p {
+    font-size: 14px;
+    color: #666;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .product {
+        flex-direction: column; 
+    }
+
+    .product-image, .product-info {
+        width: 100%; 
+    }
+}
