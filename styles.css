@@ -3,7 +3,10 @@
     padding: 0;
     box-sizing: border-box;
 }
-
+:root {
+    --primary-text-color: #333;
+    --seconadry-text-color: #666;
+}
 body {
     font-family: 'Montserrat', sans-serif;
 }
@@ -27,12 +30,12 @@ body {
 }
 
 .breadcrumb a:hover {
-    color: #333;
+    color: var(--primary-text-color);
     text-decoration: underline;
 }
 
 .breadcrumb span {
-    color: #333;
+    color: var(--primary-text-color);
     font-weight: 500;
 }
 
@@ -51,13 +54,13 @@ body {
     gap: 20px;
     padding: 10px 0;
     width: 100%;
-    height: 100vh;
 
 }
 
 .product-image {
     flex: 4;
     min-width: 300px; 
+    padding-bottom: 20px;
 
 }
 
@@ -71,7 +74,34 @@ body {
     height: 430px;
 
 }
+.main-image-container span {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--primary-text-color);
+    cursor: pointer;
+    background-color: #e2d7d7;
+    border-radius: 100%;
+    height: 40px;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 999;
+}
 
+.main-image-container span:hover {  
+    opacity: 0.8;
+}
+
+.left-arrow {
+    left: 10px;
+}
+
+.right-arrow {
+    right: 10px;
+}
 .main-image {
     width: 100%;
     position: absolute;
@@ -90,9 +120,6 @@ body {
     display: block;
 }
 
-.main-image:target ~ .main-image {
-    display: none;
-}
 
 
 .main-image:not(:target) {
@@ -142,28 +169,150 @@ body {
 }
 .product-description p {
     font-size: 1rem;
-    color: #666;
+    color: var(--seconadry-text-color);
     margin-top: 1rem;
     font-weight: 500;
 }
 .product-info {
     flex: 3;
     min-width: 300px; 
-    box-shadow: #333 0px 0px 2px;
+    box-shadow: var(--primary-text-color) 0px 0px 2px;
     border-radius: 6px;
     padding: 15px;
+    display: flex;
+    flex-direction: column;
 }
 
-.product-info h2 {
+
+.brand-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.brand-info img {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.brand-info span {
+    display: flex;
+    gap: 25px;
+}
+.brand-info span img {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.brand-info span img:hover {
+    opacity: 0.8;
+}
+.brand-description {
+    margin-block: 20px;
+}
+.brand-description h2 {
     font-size: 1.5rem;
     font-weight: 700;
     margin-bottom: 10px;
+    line-height: 1.2;
+    color: var(--primary-text-color);
 }
 
-.product-info p {
-    font-size: 14px;
-    color: #666;
+.brand-description h4 {
+    font-size: 1rem;
+    color: var(--seconadry-text-color);
+    margin-bottom: 5px;
+    font-weight: 600;
+    line-height: 1.2;
 }
+
+.brand-description h4 span {
+    color: var(--primary-text-color);
+    margin-left: 5px;
+}
+
+.rating {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+.rating p {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--seconadry-text-color);
+}
+.rating p:first-of-type{
+    color: var(--primary-text-color);
+}
+.price {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    margin-block: 15px;
+}
+.price h3 {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--seconadry-text-color);
+}
+.price p {
+    font-weight: 700;
+    color: var(--primary-text-color);
+    font-size: 1.2rem;
+    
+}
+
+.price .discount-amount {
+    text-decoration: line-through;
+    color: var(--seconadry-text-color);
+    font-size: 1rem;
+    font-weight: 500;
+}
+.price .discount {
+    background-color: #bff2b3;
+    padding: 7px;
+    border-radius: 12px;
+    font-weight: 600;
+    color: #40a828;
+}
+
+.quantity {
+    display: flex;
+    align-items: center;
+    margin-block: 15px;
+    background-color: #f5f5f5;
+    padding: 20px;
+    border-radius: 12px;
+    
+}
+.quantity-container {
+    width: 100%;
+}
+.quantity input{
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid var(--seconadry-text-color);
+    font-size: 1rem;
+    font-weight: 500;
+    text-align: center;
+    color: var(--seconadry-text-color);
+    outline: none;
+    appearance: textfield; /* Hide default number buttons */
+}
+/* Hide default number input arrows */
+input[type="number"]::-webkit-inner-spin-button {
+    appearance: none;
+    -webkit-appearance: none;
+    margin: 0;
+}
+
 
 /* Responsive Design */
 @media (max-width: 768px) {
@@ -173,5 +322,9 @@ body {
 
     .product-image, .product-info {
         width: 100%; 
+        flex:1;
+    }
+    .main-container {
+        padding: 0 20px;
     }
 }
